@@ -10,6 +10,13 @@ import (
 	"github.com/PuerkitoBio/goquery"
 )
 
+type SearchResults struct {
+	RangeFrom  int       `json:"range_from"`
+	RangeTo    int       `json:"range_to"`
+	TotalCount int       `json:"total_count"`
+	Listings   []Listing `json:"listings"`
+}
+
 func Search(siteId string, opts SearchOptions) (*SearchResults, error) {
 	url := fmt.Sprintf("https://%s.craigslist.org/search/%s", siteId, opts.Category)
 
