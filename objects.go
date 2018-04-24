@@ -13,8 +13,8 @@ type Listing struct {
 	Images      []Image           `json:"images"`
 	Attributes  map[string]string `json:"attributes,omitempty"`
 	Location    *LatLng           `json:"location,omitempty"`
-	PostedAt    time.Time         `json:"posted_at,omitempty"`
-	UpdatedAt   time.Time         `json:"updated_at,omitempty"`
+	PostedAt    *time.Time        `json:"posted_at,omitempty"`
+	UpdatedAt   *time.Time        `json:"updated_at,omitempty"`
 }
 
 type LatLng struct {

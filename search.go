@@ -82,8 +82,11 @@ func ParseSearchResults(reader io.Reader) (*SearchResults, error) {
 			Images: images,
 		}
 
-		if postedAt, err := parseTimestamp(s.Find("time.result-date").First().AttrOr("datetime", "")); err == nil {
-			listing.PostedAt = postedAt
+		if dt, exists := s.Find("time.result-date").First().Attr("datetime"); exists {
+			if postedAt, err := parseTimestamp(timeIndexLayoyt, dt); err == nil {
+				listing.PostedAt = &postedAt
+				listing.UpdatedAt = &postedAt
+			}
 		}
 
 		listings = append(listings, listing)

@@ -19,7 +19,9 @@ var (
 	reListingId  = regexp.MustCompile(`([\d]+).html`)
 	reAttributes = regexp.MustCompile(`^(.+):\s?(.*)`)
 	reImage      = regexp.MustCompile(`images.craigslist.org\/(.*)_[\d]+x[\d]+.jpg`)
-	timeLayout   = "2006-01-02T15:04:05-0700"
+
+	timeDetailsLayout = "2006-01-02T15:04:05-0700"
+	timeIndexLayoyt   = "2006-01-02 15:04"
 )
 
 func GetListing(url string) (*Listing, error) {
@@ -55,8 +57,8 @@ func ParseListing(reader io.Reader) (*Listing, error) {
 	}
 
 	if posted, updated := parseTimestamps(doc); posted != nil {
-		listing.PostedAt = (*posted).UTC()
-		listing.UpdatedAt = (*updated).UTC()
+		listing.PostedAt = posted
+		listing.UpdatedAt = updated
 	}
 
 	return listing, nil
@@ -119,8 +121,8 @@ func parseLocation(doc *goquery.Document) *LatLng {
 	return nil
 }
 
-func parseTimestamp(text string) (time.Time, error) {
-	ts, err := time.Parse(timeLayout, text)
+func parseTimestamp(layout, text string) (time.Time, error) {
+	ts, err := time.Parse(layout, text)
 	if err != nil {
 		return time.Now(), err
 	}
@@ -135,7 +137,7 @@ func parseTimestamps(doc *goquery.Document) (*time.Time, *time.Time) {
 		return nil, nil
 	}
 
-	postedAt, err := parseTimestamp(timestamps[0])
+	postedAt, err := parseTimestamp(timeDetailsLayout, timestamps[0])
 	if err != nil {
 		log.Println("cant parse time:", timestamps[0], err)
 		return nil, nil
@@ -143,7 +145,7 @@ func parseTimestamps(doc *goquery.Document) (*time.Time, *time.Time) {
 
 	updatedAt := postedAt
 	if len(timestamps) > 1 {
-		updatedAt, _ = parseTimestamp(timestamps[1])
+		updatedAt, _ = parseTimestamp(timeDetailsLayout, timestamps[1])
 	}
 
 	return &postedAt, &updatedAt
