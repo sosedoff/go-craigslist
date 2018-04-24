@@ -28,6 +28,7 @@ func main() {
     MaxPrice: 20000,
   }
 
+  // Perform a search
   result, err := craigslist.Search("chicago", opts)
   if err != nil {
     log.Fatal(err)
@@ -36,6 +37,14 @@ func main() {
   for _, listing := range result.Listings {
     log.Println(listing.JSON())
   }
+
+  // Fetch listing details
+  listing, err := craigslist.GetListing(result.Listings[0].URL)
+  if err != nil {
+    log.Fatal(err)
+  }
+
+  log.Println(listing)
 }
 ```
 
