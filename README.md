@@ -1,6 +1,9 @@
 # go-craigslist
 
-[WIP] Craigslist.org wrapper for Go
+[![Build Status](https://travis-ci.org/sosedoff/go-craigslist.svg)](https://travis-ci.org/sosedoff/go-craigslist)
+[![GoDoc](https://godoc.org/github.com/sosedoff/go-craigslist?status.svg)](https://godoc.org/github.com/sosedoff/go-craigslist)
+
+Craigslist.org wrapper for Go
 
 ## Install
 
