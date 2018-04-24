@@ -22,6 +22,8 @@ var (
 
 	timeDetailsLayout = "2006-01-02T15:04:05-0700"
 	timeIndexLayoyt   = "2006-01-02 15:04"
+
+	errInvalidListing = errors.New("Invalid listing")
 )
 
 type Listing struct {
@@ -66,7 +68,7 @@ func ParseListing(reader io.Reader) (*Listing, error) {
 
 	url := doc.Find("link").AttrOr("href", "")
 	if url == "" {
-		return nil, errors.New("Invalid listing data")
+		return nil, errInvalidListing
 	}
 
 	listing := &Listing{
