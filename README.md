@@ -39,6 +39,12 @@ func main() {
 }
 ```
 
+## Test
+
+```
+make test
+```
+
 ## License
 
 MIT
