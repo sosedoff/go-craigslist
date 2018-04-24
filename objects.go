@@ -28,12 +28,6 @@ type Image struct {
 	Large  string `json:"large"`
 }
 
-type SearchOptions struct {
-	Category string
-	Params   map[string]string
-	Skip     int
-}
-
 type SearchResults struct {
 	RangeFrom  int       `json:"range_from"`
 	RangeTo    int       `json:"range_to"`
