@@ -13,7 +13,7 @@ go get -u github.com/sosedoff/go-craigslist
 ```golang
 package main
 
-import(
+import (
   "log"
 
   "github.com/sosedoff/go-craigslist"
