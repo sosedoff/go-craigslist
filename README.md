@@ -22,17 +22,20 @@ import (
 func main() {
   opts := craigslist.SearchOptions{
     Category: "cto", // cars+trucks
-    Params: map[string]string{
-      "query": "honda",
-    },
+    Query:    "honda",
+    HasImage: true,
+    MinPrice: 10000,
+    MaxPrice: 20000,
   }
 
-  results, err := craigslist.Search("chicago", opts)
+  result, err := craigslist.Search("chicago", opts)
   if err != nil {
     log.Fatal(err)
   }
 
-  log.Println(results)
+  for _, listing := range result.Listings {
+    log.Println(listing.JSON())
+  }
 }
 ```
 
