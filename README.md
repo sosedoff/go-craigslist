@@ -35,3 +35,7 @@ func main() {
   log.Println(results)
 }
 ```
+
+## License
+
+MIT
