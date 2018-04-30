@@ -1,15 +1,40 @@
-hash: ef3d39451f34b4366d02f3a9935164f9b9eb1c3674dd0b1f8756fccde1cb4ebb
-updated: 2018-04-23T22:54:31.602359037-05:00
+hash: e619a93b1a7b950aca9096b78525d0465a1f601a17e91632ad2ddb866d61f168
+updated: 2018-04-29T20:03:00.210044968-05:00
 imports:
 - name: github.com/andybalholm/cascadia
   version: 901648c87902174f774fac311d7f176f8647bdaa
+- name: github.com/gin-contrib/sse
+  version: 22d885f9ecc78bf4ee5d72b937e4bbcdc58e8cae
+- name: github.com/gin-gonic/gin
+  version: d459835d2b077e44f7c9b453505ee29881d5d12d
+  subpackages:
+  - binding
+  - render
+- name: github.com/golang/protobuf
+  version: e09c5db296004fbe3f74490e84dcd62c3c5ddb1b
+  subpackages:
+  - proto
+- name: github.com/mattn/go-isatty
+  version: 6ca4dbf54d38eea1a992b3c722a76a5d1c4cb25c
 - name: github.com/PuerkitoBio/goquery
   version: a86ea073017a6beddef78c8659e7224e8ca634b0
+- name: github.com/ugorji/go
+  version: f3cacc17c85ecb7f1b6a9e373ee85d1480919868
+  subpackages:
+  - codec
 - name: golang.org/x/net
   version: 5f9ae10d9af5b1c89ae6904293b14b064d4ada23
   subpackages:
   - html
   - html/atom
+- name: golang.org/x/sys
+  version: cbbc999da32df943dac6cd71eb3ee39e1d7838b9
+  subpackages:
+  - unix
+- name: gopkg.in/go-playground/validator.v8
+  version: 5f1438d3fca68893a817e4a66806cea46a9e4ebf
+- name: gopkg.in/yaml.v2
+  version: 5420a8b6744d3b0345ab293f6fcba19c978f1183
 testImports:
 - name: github.com/davecgh/go-spew
   version: 8991bc29aa16c548c550c7ff78260e27b9ab7c73
