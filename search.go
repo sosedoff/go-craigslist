@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"strconv"
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
@@ -25,14 +24,7 @@ func Search(siteId string, opts SearchOptions) (*SearchResults, error) {
 		return nil, err
 	}
 
-	q := req.URL.Query()
-	for k, v := range opts.Params {
-		q.Add(k, v)
-	}
-	if opts.Skip > 0 {
-		q.Add("s", strconv.Itoa(opts.Skip))
-	}
-	req.URL.RawQuery = q.Encode()
+	req.URL.RawQuery = opts.query().Encode()
 
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {

@@ -46,6 +46,9 @@ func (opts SearchOptions) query() url.Values {
 	if opts.MaxPrice > 0 {
 		q.Add("max_price", strconv.Itoa(opts.MaxPrice))
 	}
+	if opts.Skip > 0 {
+		q.Add("s", strconv.Itoa(opts.Skip))
+	}
 
 	// Add any custom params that are not common on the search page
 	for k, v := range opts.Params {

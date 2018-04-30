@@ -20,10 +20,11 @@ func TestSearchOptionsQuery(t *testing.T) {
 		IncludeNearby:    true,
 		MinPrice:         10,
 		MaxPrice:         20,
+		Skip:             100,
 		Params:           map[string]string{"foo": "bar"},
 	}.query()
 
-	assert.Equal(t, 9, len(q))
+	assert.Equal(t, 10, len(q))
 	assert.Equal(t, "query", q.Get("query"))
 	assert.Equal(t, "T", q.Get("srchType"))
 	assert.Equal(t, "1", q.Get("hasPic"))
@@ -32,4 +33,5 @@ func TestSearchOptionsQuery(t *testing.T) {
 	assert.Equal(t, "1", q.Get("searchNearby"))
 	assert.Equal(t, "10", q.Get("min_price"))
 	assert.Equal(t, "20", q.Get("max_price"))
+	assert.Equal(t, "100", q.Get("s"))
 }
