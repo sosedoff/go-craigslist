@@ -19,7 +19,7 @@ type SearchResults struct {
 func Search(siteId string, opts SearchOptions) (*SearchResults, error) {
 	url := fmt.Sprintf("https://%s.craigslist.org/search/%s", siteId, opts.Category)
 
-	req, err := http.NewRequest("get", url, nil)
+	req, err := http.NewRequest(http.MethodGet, url, nil)
 	if err != nil {
 		return nil, err
 	}
